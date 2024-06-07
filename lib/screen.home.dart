@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chatbot_filrouge/components/navigationBar.dart';
+import 'bottom-nav-bar.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -9,6 +9,10 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
+
+  int _currentIndex = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,7 +119,14 @@ class _ScreenHomeState extends State<ScreenHome> {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBarCustom(),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 }
